@@ -26,9 +26,9 @@ pipeline {
             }
         }
 
-        // stage("Scan"){
-
-        // }
+        stage("Sonar Scan"){
+            sh "mvn sonar:sonar -Dsonar.host.url=http://ec2-3-140-210-15.us-east-2.compute.amazonaws.com:9005 -Dsonar.login=0a0f3d64c353496711042451cfe566a3a972862c"
+        }
 
         stage("Package"){
             steps{
