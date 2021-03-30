@@ -36,13 +36,13 @@ pipeline {
             }
         }
 
-        post {
-            always {
-                junit 'target/reports/*.xml'
-            }
-            success{
-                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
-            }
+    }
+    post {
+        always {
+            junit 'target/reports/*.xml'
+        }
+        success{
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
         }
     }
 }
