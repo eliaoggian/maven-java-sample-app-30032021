@@ -2,11 +2,6 @@ pipeline {
     agent any
 
     stages {
-        stage("Checkout"){
-            steps{
-                git "https://github.com/eliaoggian/maven-java-sample-app-30032021.git"
-            }
-        }
 
         stage("Clean"){
             steps{
