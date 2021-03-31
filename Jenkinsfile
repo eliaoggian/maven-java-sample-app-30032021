@@ -19,6 +19,11 @@ pipeline {
             steps{
                 sh "mvn test"
             }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
         }
 
         stage("Sonar Scan"){
@@ -31,15 +36,11 @@ pipeline {
             steps{
                 sh "mvn package"
             }
-        }
-
-    }
-    post {
-        always {
-            junit 'target/surefire-reports/*.xml'
-        }
-        success{
-            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+            post {
+                success {
+                    archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+                }
+            }
         }
     }
 }
